@@ -1,5 +1,6 @@
 package application;
 
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -36,9 +37,17 @@ public class Program {
             System.out.print(account);
         } catch (DomainException e) {
             System.out.println(e.getMessage());
-        }  catch(RuntimeException e){
-            System.out.println("Unexcpted error");
-         }
+        }
+        catch(InputMismatchException e){
+            System.out.println("Input error");
+        }
+        catch(RuntimeException e){
+        System.out.println(e.getMessage());
+        }
+        finally{
+            sc.close();
+        }
 
-    }
+        }
 }
+
